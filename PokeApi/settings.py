@@ -25,6 +25,10 @@ SECRET_KEY = 'django-insecure-+*kyzt!zdmngs+g)#(c%luwtyi_aprjowi1&q)r@7yq&b4$ph@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ALLOWED_HOSTS = ['pokemaster-prob1-production.up.railway.app']
+
+CSRF_TRUSTED_ORIGINS = ['https://pokemaster-prob1-production.up.railway.app']
+
 
 # Application definition
 
