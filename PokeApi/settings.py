@@ -77,15 +77,15 @@ WSGI_APPLICATION = 'PokeApi.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-#mysql://root:PELUr6ui46BqeALbzKkU@containers-us-west-119.railway.app:7180/railway
+#mysql://root:86eBvqkbcnqMIjs1HVpS@containers-us-west-145.railway.app:7206/railway
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'containers-us-west-119.railway.app',
-        'PORT': '7180',
+        'HOST': 'containers-us-west-145.railway.app',
+        'PORT': '7206',
         'USER': 'root',
-        'PASSWORD':'PELUr6ui46BqeALbzKkU',
+        'PASSWORD':'86eBvqkbcnqMIjs1HVpS',
         'NAME': 'railway'
     }
 }
