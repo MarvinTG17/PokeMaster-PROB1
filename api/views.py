@@ -1,11 +1,11 @@
 from django.http.response import JsonResponse
-from django.views import View
-from django.core.paginator import Paginator,  EmptyPage, PageNotAnInteger
+#from django.views import View
+from rest_framework.views import APIView
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from .models import Pokemon,Pokedex
 
-class PokemonView(View):
-    
-    def getPokemones(request):
+class ListPokemon(APIView):
+    def get(self,request):
         pokemons = list(Pokemon.objects.values())
         
         paginator = Paginator(pokemons, 20) 
@@ -38,14 +38,16 @@ class PokemonView(View):
             #response['ultima_pagina'] = f'/api/pokemon?page={paginator.page(paginator.num_pages).number}'
         return JsonResponse(response)
     
-    def getPokemonId(self,id):
+class GetPokemonId(APIView):
+    def get(self,request,id):
         pokemon = list(Pokemon.objects.filter(id=id).values())
         if len(pokemon)>0:
             pokeid = pokemon[0]
             dato = {"resultado":pokeid}
         return JsonResponse(dato)
     
-    def getPokemonNombre(self,nombre):
+class GetPokemonNombre(APIView):
+    def get(self,request,nombre):
         pokemon = list(Pokemon.objects.filter(identifier=nombre).values())
         if len(pokemon)>0:
             pokeNombre = pokemon[0]
@@ -53,21 +55,23 @@ class PokemonView(View):
         return JsonResponse(data)
     
 
-class PokedexView(View):
-    def getPokedex(self):
+class ListPokedex(APIView):
+    def get(self,request):
         pokedexes = list(Pokedex.objects.values())
         if len(pokedexes)>0:
             datos = {"resultado":pokedexes}
         return JsonResponse(datos)
-    
-    def getPokedexId(self,id):
+
+class GetPokedexId(APIView):    
+    def get(self,request,id):
         pokedex = list(Pokedex.objects.filter(id=id).values())
         if len(pokedex)>0:
             pokedexid = pokedex[0]
             dato = {"resultado":pokedexid}
         return JsonResponse(dato)
-    
-    def getPokedexNombre(self,nombre):
+
+class GetPokedexNombre(APIView):    
+    def get(self,request,nombre):
         pokedex = list(Pokedex.objects.filter(identifier=nombre).values())
         if len(pokedex)>0:
             pokedexNombre = pokedex[0]
