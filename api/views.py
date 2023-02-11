@@ -4,19 +4,6 @@ from django.core.paginator import Paginator,  EmptyPage, PageNotAnInteger
 from .models import Pokemon,Pokedex
 
 class PokemonView(View):
-
-    """ def getPokemones(self,request):
-        pokemones = list(Pokemon.objects.values())
-
-        paginacion = Paginator(pokemones,20)
-        pagina = request.GET.get("page") or 1
-        post = paginacion.get_page(pagina)
-        pagina_actual = int(pagina)
-        paginas = range(1,post.paginator.num_pages + 1)
-
-        if len(pokemones)>0:
-            datos = {"paginas":paginas,"pagina_actual":pagina_actual,"resultado":pokemones}
-        return JsonResponse(datos) """
     
     def getPokemones(request):
         pokemons = list(Pokemon.objects.values())
